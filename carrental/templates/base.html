@@ -28,8 +28,6 @@
         </div>
 
         <div id=overlay_block></div>
-        {% include 'includes/login.html'%}
-        {% include 'includes/forget_password.html'%}
 
         <script type=text/javascript src={{STATIC_URL}}js/jquery-1.11.3.min.js></script>
         <script type=text/javascript src={{STATIC_URL}}js/jquery-migrate-1.2.1.min.js></script>
@@ -40,7 +38,7 @@
         <script type=text/javascript src={{STATIC_URL}}js/jquery.selectbox-0.2.min.js></script>
         <script type=text/javascript src={{STATIC_URL}}js/jquery.blueberry.js></script>
         <script type=text/javascript src={{STATIC_URL}}js/script.js></script>
-
         {% render_block "js" %}
+        
     </body>
 </html>
