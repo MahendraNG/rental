@@ -154,11 +154,8 @@ INSTALLED_APPS = [
     'djangocms_link',
     'reversion',
     'carrental',
-<<<<<<< HEAD
     'cities',
     'car',
-=======
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -166,7 +163,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
 
->>>>>>> af98fd37ed527815e48fd58c6c7e36302cd5febe
 ]
 
 SITE_ID = 1
