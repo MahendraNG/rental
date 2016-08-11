@@ -1,0 +1,46 @@
+{% load cms_tags menu_tags sekizai_tags %}
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}Car Rental &amp; Booking{% endblock title %}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv=content-type content="text/html; charset=UTF-8" />
+
+        <link rel="shortcut icon" type=image/x-icon href={{STATIC_URL}}images/favicon.ico />
+        <link rel=stylesheet href={{STATIC_URL}}css/jquery-ui.css type=text/css media=all />
+        <link rel=stylesheet href={{STATIC_URL}}css/style.css type=text/css media=all />
+        <!--[if IE]> <script type=text/javascript src={{STATIC_URL}}js/html5.js></script> 
+            <link rel=stylesheet id=stylesheet-ie href={{STATIC_URL}}css/css_ie.css type=text/css media=all /> 
+        <![endif]-->
+
+        {% render_block "css" %}
+    </head>
+
+    <body class="left-slider two-column">
+        {% cms_toolbar %}
+        <div id=conteiner>
+            {% include 'includes/menu.html' %}
+            {% block content %}
+
+            {% endblock content %}
+
+            {% include 'includes/footer.html' %}
+        </div>
+
+        <div id=overlay_block></div>
+        {% include 'includes/login.html'%}
+        {% include 'includes/forget_password.html'%}
+
+        <script type=text/javascript src={{STATIC_URL}}js/jquery-1.11.3.min.js></script>
+        <script type=text/javascript src={{STATIC_URL}}js/jquery-migrate-1.2.1.min.js></script>
+        <script type=text/javascript src={{STATIC_URL}}js/jquery-ui.js></script>
+        <!--[if IE]> <script type=text/javascript src={{STATIC_URL}}js/placeholder_ie.js></script> <![endif]-->
+        <script type=text/javascript src={{STATIC_URL}}js/custom-form-elements.js></script>
+        <script type=text/javascript src={{STATIC_URL}}js/jquery.meio.mask.js></script>
+        <script type=text/javascript src={{STATIC_URL}}js/jquery.selectbox-0.2.min.js></script>
+        <script type=text/javascript src={{STATIC_URL}}js/jquery.blueberry.js></script>
+        <script type=text/javascript src={{STATIC_URL}}js/script.js></script>
+
+        {% render_block "js" %}
+    </body>
+</html>
