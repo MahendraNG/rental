@@ -142,7 +142,9 @@ INSTALLED_APPS = [
     'djangocms_inherit',
     'djangocms_link',
     'reversion',
-    'carrental'
+    'carrental',
+    'cities',
+    'car',
 ]
 
 LANGUAGES = (
@@ -182,15 +184,27 @@ CMS_PLACEHOLDER_CONF = {
     },
 }
 
+# DATABASES = {
+#     'default': {
+#         'CONN_MAX_AGE': 0,
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'HOST': 'localhost',
+#         'NAME': 'project.db',
+#         'PASSWORD': '',
+#         'PORT': '',
+#         'USER': ''
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'HOST': 'localhost',
-        'NAME': 'project.db',
-        'PASSWORD': '',
-        'PORT': '',
-        'USER': ''
+        'NAME': 'car_rental',
+        'PASSWORD': '123',
+        'PORT': '5432',
+        'USER': 'cis',
+        'ATOMIC_REQUESTS': True,
     }
 }
 
@@ -204,3 +218,53 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+CITIES_DATA_DIR = '/var/data'
+
+
+CITIES_FILES = {
+    'city': {
+       'filenames': ["IN.zip" ],
+       'urls':     ['http://download.geonames.org/export/dump/'+'{filename}']
+    },
+}
+CITIES_LOCALES = ['en', 'ind', 'LANGUAGES']
+CITIES_POSTAL_CODES = ['IN']
+
+# CITIES_PLUGINS = [
+#     'cities.plugin.postal_code_ca.Plugin',  # Canada postal codes need region codes remapped to match geonames
+#     'cities.plugin.reset_queries.Plugin',  # plugin that helps to reduce memory usage when importing large datasets (e.g. "allCountries.zip")
+# ]
+# CITIES_IGNORE_EMPTY_REGIONS = True
+
+LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'filters': {
+            'require_debug_false': {
+                '()': 'django.utils.log.RequireDebugFalse'
+            }
+        },
+        'handlers': {
+            'mail_admins': {
+                'level': 'ERROR',
+                'filters': ['require_debug_false'],
+                'class': 'django.utils.log.AdminEmailHandler'
+            },
+            'console':{
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler'
+            },
+        },
+        'loggers': {
+            'django.request': {
+                'handlers': ['mail_admins'],
+                'level': 'ERROR',
+                'propagate': True,
+                },
+            'cities': {
+                'handlers': ['console'],
+                'level': 'INFO'
+            },
+
+            }
+    }
