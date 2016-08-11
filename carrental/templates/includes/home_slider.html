@@ -37,12 +37,12 @@
                     <div class="form-block location">Location</div>
                     <div class="form-block airport_codes"><a href=# title>Airport codes</a>
                     </div>
-                    <input class=location type=text value placeholder="Enter airport, city or zip code" name="location" />
+                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="location" />
                     <input id=location-checkbox type=checkbox class=styled name=checkbox_location value=1 /> Return at different location</label>
                 </div>
                 <div class="location-block return_location">
                     <div class="form-block location">Return location</div>
-                    <input class=location type=text value placeholder="Enter airport, city or zip code" name="return_location" /> </div>
+                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="return_location" /> </div>
                 <div class="form-block pick-up">
                     <h4>Pick-up date</h4>
                     <input class=datepicker type=date value name="data_from" />
@@ -73,13 +73,13 @@
                     <div class="form-block location">Location</div>
                     <div class="form-block airport_codes"><a href=# title>Airport codes</a>
                     </div>
-                    <input class=location type=text value placeholder="Enter airport, city or zip code" name="location_1" />
+                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="location_1" />
                     <input id=location-checkbox-1 type=checkbox class=styled name=checkbox_location_1 value="1" />
                     <label for=location-checkbox-1> Return at different location</label>
                 </div>
                 <div class="location-block return_location">
                     <div class="form-block location">Return location</div>
-                    <input class=location type=text value placeholder="Enter airport, city or zip code" name="return_location_1" /> </div>
+                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="return_location_1" /> </div>
                 <div class="form-block pick-up">
                     <h4>Pick-up date</h4>
                     <input class=datepicker type=date value name="data_from_1" />
@@ -110,3 +110,12 @@
         <div class=clear></div>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
+<script src="{{STATIC_URL}}js/jquery.geocomplete.min.js"></script>
+
+<script type="text/javascript">
+    $(".car-location").geocomplete()
+</script>
