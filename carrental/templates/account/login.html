@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load cms_tags menu_tags sekizai_tags i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Signup to Get Free Trip up to 50 KM" %}{% endblock %}
+
+
+{% block content %}
+<div id=slider>
+    <div id=slider-img>
+        <ul class=slides>
+            <!-- {% placeholder "my_img_slider" %} -->
+            
+            <li><img src={{STATIC_URL}}images/slider1.jpg alt />
+            </li>
+            <li><img src={{STATIC_URL}}images/slider3.jpg alt />
+            </li>
+            <li><img src={{STATIC_URL}}images/slider2.jpg alt />
+            </li>
+            <div id=slider-pattern></div>
+        </ul>
+    </div>
+    <div id=slider-content>
+        <div id=slider-post>
+            <div class=post>
+                <div class=entry-header>
+                    <h3 class=entry-format>One Click Login</h3>
+                </div>
+                <div class=entry-content>
+                Phasellus eget ultricies libero. Sed dolor turpis, malesuada vitae cursus a, auctor semper neque.
+
+                {% get_providers as socialaccount_providers %}
+                {% for provider in socialaccount_providers %}
+                    {% if provider.id == "openid" %}
+                        {% for brand in provider.get_brands %}
+
+                            <span class=sign_in>
+                                <a title="{{brand.name}}" class="sign_button tab_link_button {{provider.id}} {{brand.id}}" href="{% provider_login_url provider.id openid=brand.openid_url process=process %}">{{brand.name}} </a>
+                            </span>
+                        {% endfor %}
+                    {% endif %}
+
+                    <span class=sign_in>
+                        <a title="{{provider.name}}" class="sign_button tab_link_button {{provider.id}}" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{provider.name}}</a>
+                    </span>
+                {% endfor %}
+                </div>
+                </div>
+            <div id=slider-front-img> <img src={{STATIC_URL}}images/slider_front_img.png alt="" /> </div>
+            
+        </div>
+
+        <form class="login main-form" id=slider-form method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+
+            <div class=main_form_navigation >
+                <div id=book_car class="title-form current">
+                	<a href=# title>{% trans "Sign In" %}</a>
+                </div>
+                <div class="title-form back"><a href="{{ signup_url }}">Create New Account</a>
+                </div>
+
+            </div>
+            {% include 'account/form_error.html' %}
+            <div id=book_car_content class=content-form>
+                <div class=location-block>
+                    <div class="form-block location">Email</div>
+                    <input class=location type=text placeholder="Email" name="email" />
+
+                    <div class="form-block location">Password</div>
+                    <input class=location type=text placeholder="password" name="password" />
+
+					  {% if redirect_field_value %}
+					  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+					  {% endif %}
+                </div>
+                <div class="form-block form-submit form-continue">
+                    <input class="orange_button form-continue" type=submit value="{% trans 'Sign Up' %}" /> </div>
+                <div class=clear></div>
+            </div>
+
+            <div class=clear></div>
+        </form>
+        <div class=clear></div>
+    </div>
+</div>
+{% endblock %}
+
