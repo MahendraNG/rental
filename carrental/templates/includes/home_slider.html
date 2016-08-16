@@ -19,90 +19,63 @@
                 <div class=entry-header>
                     <h3 class=entry-format>Great car hire deals.</h3> </div>
                 <div class=entry-content>Phasellus eget ultricies libero. Sed dolor turpis, malesuada vitae cursus a, auctor semper neque.</div>
-                <div class=entry-meta><a href=# title>Learn more</a>
+                <div class=entry-meta><a href="javascript:void(0)" title>Learn more</a>
                 </div>
             </div>
             <div id=slider-front-img> <img src={{STATIC_URL}}images/slider_front_img.png alt="" /> </div>
         </div>
 
-        <form id=slider-form class=main-form action="">
+        <form id=slider-form class=main-form action="{% url 'car-listing'%}">
+            <div class="geo-city_from" style="display:none">
+                <input type="hidden" data-geo="administrative_area_level_2" value="" name="city_from">
+            </div>
+            <div class="geo-city_to" style="display:none">
+                <input type="hidden" data-geo="administrative_area_level_2" value="" name="city_to">
+            </div>
+
             <div class=main_form_navigation>
-                <div id=book_car class="title-form current"><a href=# title>Book a Car</a>
-                </div>
-                <div id=manage_reservation class="title-form back"><a href=# title>Manage Reservation</a>
+                <div id='book_car' class="title-form current"><a href='javascript:void(0)'>Search Cars</a>
                 </div>
             </div>
-            <div id=book_car_content class=content-form>
-                <div class=location-block>
+
+            <div id='book_car_content' class='content-form'>
+                <div class='location-block'>
                     <div class="form-block location">Location</div>
-                    <div class="form-block airport_codes"><a href=# title>Airport codes</a>
-                    </div>
-                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="location" />
-                    <input id=location-checkbox type=checkbox class=styled name=checkbox_location value=1 /> Return at different location</label>
+                    <input class="location location-from car-location" type=text  placeholder="Enter city, zip code or address" />
+                    <input id='location-checkbox' type='checkbox' class='styled' value='1' /> <label> Return at different location</label>
                 </div>
+
                 <div class="location-block return_location">
                     <div class="form-block location">Return location</div>
-                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="return_location" /> </div>
+                    <input class="location location-to car-location" type=text placeholder="Enter city, zip code or address"/> </div>
+
                 <div class="form-block pick-up">
                     <h4>Pick-up date</h4>
-                    <input class=datepicker type=date value name="data_from" />
-                    <input class=time-select type=time size=5 value name="time_from" />
+                    <input class=datepicker type="text" name="date_from" />
+                    <input class='time-select' type=time size=5 name="time_from" />
                     <div class=clear></div>
                 </div>
                 <div class="form-block drop-off">
                     <h4>Drop-off date</h4>
-                    <input class=datepicker type=date name=data_to value="" />
-                    <input class=time-select type=time size=5 value name="time_to" />
+                    <input class='datepicker' type="text" name='date_to' />
+                    <input class='time-select' type=time size=5 name="time_to" />
                     <div class=clear></div>
                 </div>
                 <div class="form-block car-type">
-                    <h4>Car type</h4>
+                    <h4>Number of passenger</h4>
                     <div class=car-type-select>
-                        <select class=select name=select_cartype>
-                            <option selected=selected>Standard</option>
-                            <option>Mini</option>
+                        <select class=select name=passengers>
+                            <option selected=selected value="3">Up to 3</option>
+                            <option value="3">Up to 4</option>
+                            <option value="7">Up to 7</option>
+                            <option value="9">Up to 9</option>
+                            <option value="17">up to 17 </option>
+                            <option value="18">17+</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-block form-submit form-continue">
-                    <input class="orange_button form-continue" type=submit value="Continue" /> </div>
-                <div class=clear></div>
-            </div>
-            <div id=manage_reservation_content class="content-form hidden">
-                <div class=location-block>
-                    <div class="form-block location">Location</div>
-                    <div class="form-block airport_codes"><a href=# title>Airport codes</a>
-                    </div>
-                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="location_1" />
-                    <input id=location-checkbox-1 type=checkbox class=styled name=checkbox_location_1 value="1" />
-                    <label for=location-checkbox-1> Return at different location</label>
-                </div>
-                <div class="location-block return_location">
-                    <div class="form-block location">Return location</div>
-                    <input class="location car-location" type=text value placeholder="Enter airport, city or zip code" name="return_location_1" /> </div>
-                <div class="form-block pick-up">
-                    <h4>Pick-up date</h4>
-                    <input class=datepicker type=date value name="data_from_1" />
-                    <input class=time-select type=time size=5 value name="time_from_1" />
-                    <div class=clear></div>
-                </div>
-                <div class="form-block drop-off">
-                    <h4>Drop-off date</h4>
-                    <input class=datepicker type=date name="data_to_1" />
-                    <input class=time-select type=time size=5 value name="time_to_1" />
-                    <div class=clear></div>
-                </div>
-                <div class="form-block car-type">
-                    <h4>Car type</h4>
-                    <div class=car-type-select>
-                        <select class=select name=select_cartype_1>
-                            <option selected=selected>Standard</option>
-                            <option>Mini</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-block form-submit">
-                    <input class="orange_button form-continue" type=submit value="Continue" /> </div>
+                    <input class="orange_button form-continue" type=submit value="Search" /> </div>
                 <div class=clear></div>
             </div>
             <div class=clear></div>
@@ -110,12 +83,3 @@
         <div class=clear></div>
     </div>
 </div>
-
-
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
-<script src="{{STATIC_URL}}js/jquery.geocomplete.min.js"></script>
-
-<script type="text/javascript">
-    $(".car-location").geocomplete()
-</script>

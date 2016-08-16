@@ -1,0 +1,55 @@
+{% extends 'base_listing.html' %}
+
+    {% block listing_result%}
+    <div class="widget main-widget product-widget">
+	    <div class=content-overlay> <img class=ajax-loader src=images/ajax-loader.gif alt /> </div>
+	    <form action=="">
+	        
+	        {% include 'includes/sorting.html' %}
+	        {% for car in cars %}
+	        <div class=post>
+	            <div class=main-block_container>
+	                <div class=main-block>
+	                    <div class=product-img> <img src={{STATIC_URL}}images/product-3.png alt /> </div>
+	                    <div class=product-info>
+	                        <h3 class=entry-format>{{car.car.get_car_name}} <span class=top-seller>{{car.city}}</span></h3>
+	                        <div class=features>
+	                            <p><img src={{STATIC_URL}}images/passenger-icon.png alt /> {{car.car.seating_capacity}} passengers</p>
+	                            <p><img src={{STATIC_URL}}images/transmission-icon.png alt /> automatic transmission</p>
+	                            {% if car.ac_charges %}
+	                            <p><img src={{STATIC_URL}}images/air-icon.png alt /> Air conditioning {{car.ac_charges}}/KM Extra</p>
+	                            {% endif %}
+	                            <p><img src={{STATIC_URL}}images/km_l-icon.png alt /> {{car.per_km_charge}}/km</p>
+	                        </div>
+	                        <div class=details>
+	                            <div class=view-details>[+] View car details</div>
+	                            <div class=close-details>[-] Close car details</div>
+	                            <ul class=details-more>
+	                                <li> Night time driving Charge from 11PM to 5 AM: {{car.night_drive_charge}} </li>
+	                                <li>Maxmum  hours for Trip : {{car.maximum_hours}} Hours</li>
+	                                <li>24 Service and Support in Emergency</li>
+	                                <li>Vehicle Stability Control</li>
+	                                {% if car.details%}
+	                                	<li>{{car.details}}</li>
+	                                {% endif %}
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class=additional-block>
+	                    <div>
+	                        <p>INR. {{car.minimum_charge}}</p>
+	                        <p class=span>{{car.maximum_km}} free miles included</p>
+	                        <input class="continue_button blue_button" type=submit value=Select />
+	                    </div>
+	                </div>
+	                <div class=clear></div>
+	            </div>
+	        </div>
+	        <div class=post-delimiter></div>
+	        {% endfor %}
+	    </form>
+	</div>
+
+
+    {% endblock listing_result %}

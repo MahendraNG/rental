@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+    {% block extracss %}
+        <link rel=stylesheet href={{STATIC_URL}}css/jquery.slider.min.css/>
+        <link rel=stylesheet href={{STATIC_URL}}datepicker/jquery.datetimepicker.css/>
+    {% endblock %}
+
+    {% block content %}
+
+    <div id=main>
+        {% include 'includes/top_search.html' %}
+        <div id=primary>
+                {% include 'includes/left_filter.html' %}
+            <div id=content class=sidebar-middle>
+                {% block listing_result%}
+                {% endblock listing_result %}
+                {% include 'includes/pagination.html' %}
+            </div>
+            <div class=clear></div>
+        </div>
+    </div>
+
+    {% endblock content %}
+
+    {% block extrajs %}
+        <script type=text/javascript src={{STATIC_URL}}js/jquery.slider.min.js></script>
+        <script type=text/javascript src={{STATIC_URL}}datepicker/jquery.datetimepicker.js></script>
+
+    {% endblock %}

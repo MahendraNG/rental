@@ -1,0 +1,43 @@
+            <form id=slider-form action="" class=main-form>
+                <div id=book_car class="title-form current"> <span> <img src={{STATIC_URL}}images/search.png alt /> Search for a car: </span> </div>
+                <div id=book_car_content class=content-form>
+                    <div class=location-block>
+                        <div class="form-block location">Location</div>
+                        <div class="form-block airport_codes"><a href=# title>Airport codes</a>
+                        </div>
+                        <input class=location type=text value placeholder="Enter airport, city or zip code" name="location" />
+                        <input id=location-checkbox type=checkbox class=styled name=checkbox_location value="1" />
+                        <label for=location-checkbox> Return at different location</label>
+                        <div class="location-block return_location">
+                            <div class="form-block location">Return location</div>
+                            <input class=location type=text value placeholder="Enter airport, city or zip code" name="return_location" /> </div>
+                    </div>
+                    <div class="form-block pick-datetime">
+                        <div class="form-block pick-up">
+                            <h4>Pick-up date</h4>
+                            <input class=datepicker type=date value name="data_from" />
+                            <input class=time-select type=time size=5 value name="time_from" />
+                            <div class=clear></div>
+                        </div>
+                        <div class="form-block drop-off">
+                            <h4>Drop-off date</h4>
+                            <input class=datepicker type=date name=data_to value="" />
+                            <input class=time-select type=time size=5 value name="time_to" />
+                            <div class=clear></div>
+                        </div>
+                    </div>
+                    <div class="form-block car-type">
+                        <h4>Car type</h4>
+                        <div class=car-type-select>
+                            <select class=select name=select_cartype>
+                                <option selected=selected>Standard</option>
+                                <option>Mini</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-block form-submit">
+                        <input class="orange_button form-update" type=submit value="Update" /> </div>
+                    <div class=clear></div>
+                </div>
+                <div class=clear></div>
+            </form>

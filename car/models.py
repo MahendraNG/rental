@@ -55,7 +55,7 @@ class RentalCarListing(models.Model):
     charge_per_extra_hours = models.FloatField("Extra per hours charge", default = 120)
     night_drive_charge = models.IntegerField("For Night time driving from 11PM to 5 AM", default = 0)
     per_km_charge = models.FloatField("Per KM Charge", default = 9)
-    ac_charges = models.FloatField("AC Charge per KM", default = 1)
+    ac_charges = models.FloatField("AC Charge per KM", default = 0)
     details = models.TextField("Extra details")
     tac = models.TextField("Term and condition ")
 
